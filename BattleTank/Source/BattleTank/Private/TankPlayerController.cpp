@@ -2,6 +2,7 @@
 
 
 #include "TankPlayerController.h"
+#include "Engine/World.h"
 #include "BattleTank.h"
 
 
@@ -37,8 +38,20 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetControlledTank()) { return; }
 
-	// Get world location if linetrace trough crosshair
-	// if it hits the landscape
-		// tell controlled tank to aim at this point
+	FVector HitLocation;  // Out parameter
+	if (GetSightRayHitLocation(HitLocation)) // has "side-effect", is going to line trace
+	{
+	// TODO tell controlled tank to aim at this point
+	}
 }
+
+// Get world locaiton of linetrace through crosshair, true if hits landscape
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+	OutHitLocation = FVector(1.0);
+	return false;
+}
+
+
+
 
